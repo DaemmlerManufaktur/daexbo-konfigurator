@@ -27,10 +27,14 @@ var dxGroups=[
 {name:'Technik & Zubehör',items:[['Autoterm 2D Standheizung','heater','Diesel-Luftheizung'],['Stromversorgung','power','Energieversorgung für Verbraucher'],['LED-Beleuchtung','lights','Laderaumbeleuchtung'],['Clesana C1','toilet','Mobile Sanitärlösung']]}
 ];
 var dxPrices={}; /* Beispiel: dxPrices['bed']=1490; */
-var dxImages={'cook': 'Boxiokoch.png',
-  'bags': 'DaexboTasche.png',
-  'boxes': 'Daexbobox.png',
-  'mattress': 'Daexbomatratze.png'}; /* Beispiel: dxImages['bed']='https://www.example.de/bett.jpg'; */
+
+var dxImages = {
+  'cook': 'https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/Boxiokoch.png',
+  'bags': 'https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/DaexboTasche.png',
+  'boxes': 'https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/Daexbobox.png',
+  'mattress': 'https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/Daexbomatratze.png'
+};
+
 var dxSelected={};var dxCurrent=0;
 function dxEsc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function dxMoney(n){return Number(n).toLocaleString('de-DE',{style:'currency',currency:'EUR'});}
