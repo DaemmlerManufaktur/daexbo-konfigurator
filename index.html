@@ -60,7 +60,9 @@ button:focus-visible{outline:3px solid #86a87b;outline-offset:2px}
 /* <![CDATA[ */
 var dxGroups = [
   {name:'Basisfahrzeug',items:[['MAN TGE','man','Basisfahrzeug für den modularen Ausbau'],['Mercedes-Benz Sprinter','sprinter','Alternative Fahrzeugbasis'],['Vorhandenes Fahrzeug','existing','Ausbau eines vorhandenen Fahrzeugs']]},
-  {name:'Innenraum',items:[['Gefilzte Verkleidung','felt','Verkleidung des Laderaums'],['Bodenbelag','floor','Robuster Boden für den Van'],['Airlineschienen Seitenwand','rails-side','Flexible Ladungssicherung'],['Airlineschienen Decke','rails-ceiling','Zusätzliche Befestigungsmöglichkeiten'],['Bodenschienen','rails-floor','Schienensystem im Fahrzeugboden'],['Seitenfenster','window','Fenster für den Laderaum'],['Dachhaube','roof','Licht und Belüftung']]},
+  {name:'Innenraum',items:[[
+['DAEXBO Van Basispaket','basic','Gefilzte Innenverkleidung, Bodenbelag sowie Airlineschienen an Seitenwänden und Decke']
+,'Gefilzte Verkleidung','felt','Verkleidung des Laderaums'],['Bodenbelag','floor','Robuster Boden für den Van'],['Airlineschienen Seitenwand','rails-side','Flexible Ladungssicherung'],['Airlineschienen Decke','rails-ceiling','Zusätzliche Befestigungsmöglichkeiten'],['Bodenschienen','rails-floor','Schienensystem im Fahrzeugboden'],['Seitenfenster','window','Fenster für den Laderaum'],['Dachhaube','roof','Licht und Belüftung']]},
   {name:'Module & Stauraum',items:[['DAEXBO Stauboxen','boxes','Modularer Stauraum'],['Tablarauszug','drawer','Ausziehbares Staumodul'],['Hängetaschen C-/D-Säule','bags','Seitlicher Stauraum'],['Sperrstange','bar','Variable Ladungssicherung']]},
   {name:'Küche & Wasser',items:[['Küchenmodul','kitchen','Modulare Koch- und Staulösung'],['BOXIO Cook','cook','Mobiles Kochsystem'],['BOXIO Wash','wash','Mobile Waschlösung'],['Wassersystem','water','Wasserversorgung im Fahrzeug']]},
   {name:'Schlafen & Sitzen',items:[['Freitragendes Bett','bed','Schlafsystem im Laderaum'],['DAEXBO Matratze','mattress','Passende Schlafauflage'],['Zusatzsitz','seat','Zusätzliche Sitzmöglichkeit']]},
@@ -69,7 +71,7 @@ var dxGroups = [
 
 // Hier BRUTTOPREISE in Euro eintragen, z.B. 'boxes': 299.90
 // Leere Einträge bleiben "Preis auf Anfrage".
-var dxPrices = {  'boxes': 299
+var dxPrices = {  'boxes': 299, 'basic': 2490,
 };
 
 var dxImages = {
@@ -78,7 +80,14 @@ var dxImages = {
   'boxes': 'https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/Daexbobox.png',
   'mattress': 'https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/Daexbomatratze.png'
 };
-
+var dxPackages = {
+  'basic': [
+    'felt',
+    'floor',
+    'rails-side',
+    'rails-ceiling'
+  ]
+};
 var dxSelected = {};
 var dxCurrent = 0;
 var dxTaxRate = 0.19;
