@@ -74,7 +74,7 @@ var dxPackages = {
   'basic': ['felt','floor','rails-side','rails-ceiling']
 };
 
-var dxSelected={};
+var dxSelected = {'basic': true};
 var dxCurrent=0;
 function dxEsc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 function dxMoney(n){return Number(n).toLocaleString('de-DE',{style:'currency',currency:'EUR'});}
