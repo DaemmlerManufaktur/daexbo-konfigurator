@@ -4,29 +4,73 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DAEXBO Van Konfigurator</title>
-<style>body{margin:0;padding:16px;background:#f5f3ed}button:focus-visible{outline:3px solid #86a87b;outline-offset:2px}</style>
+<style>
+body{margin:0;padding:16px;background:#f5f3ed}
+button:focus-visible{outline:3px solid #86a87b;outline-offset:2px}
+#dx-config *{box-sizing:border-box}
+#dx-config h2{margin:0 0 8px}
+#dx-config .dx-intro{margin:0 0 18px}
+#dx-config .dx-nav{display:flex;flex-wrap:wrap;gap:7px;margin:16px 0}
+#dx-config button{cursor:pointer;border:1px solid #bdc8b5;background:white;color:#203e35;border-radius:7px;padding:10px 13px;font-size:14px}
+#dx-config button.dx-active,#dx-config button.dx-picked,#dx-config button.dx-main{background:#203e35;color:white;border-color:#203e35}
+#dx-config .dx-layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(230px,1fr);gap:18px}
+#dx-config .dx-card,#dx-config .dx-summary{background:white;border-radius:9px;padding:16px;margin-bottom:12px;border:1px solid #e1e7dc}
+#dx-config .dx-card h4{margin:0 0 7px}
+#dx-config .dx-card p{margin:0 0 12px;color:#53645c;font-size:14px}
+#dx-config .dx-price{font-size:16px;font-weight:bold;color:#203e35;margin:8px 0}
+#dx-config .dx-price small{font-size:11px;font-weight:normal;color:#777}
+#dx-config .dx-thumb{background:#e7ecdf;min-height:110px;display:flex;align-items:center;justify-content:center;color:#6d8074;font-size:13px;margin-bottom:12px;border-radius:6px;overflow:hidden}
+#dx-config .dx-thumb img{width:100%;height:160px;object-fit:contain;background:white}
+#dx-config .dx-summary{position:sticky;top:12px}
+#dx-config .dx-summary ul{padding-left:18px;font-size:14px}
+#dx-config .dx-foot{display:flex;justify-content:space-between;gap:8px;margin-top:12px}
+#dx-config .dx-count{font-size:13px;color:#607367}
+#dx-config .dx-total-line{display:flex;justify-content:space-between;gap:12px;margin:7px 0}
+#dx-config .dx-total-gross{font-size:17px;font-weight:bold;color:#203e35;border-top:1px solid #d9e2d7;padding-top:10px;margin-top:10px}
+#dx-config .dx-total-note{font-size:12px;color:#64756a;line-height:1.5;margin-top:9px}
+@media(max-width:700px){#dx-config .dx-layout{grid-template-columns:1fr}#dx-config .dx-summary{position:static}}
+</style>
 </head>
 <body>
 <div id="dx-config" style="font-family:Arial,sans-serif;color:#203e35;background:#f5f3ed;padding:20px;border-radius:12px;max-width:1100px;margin:auto">
-<style>
-#dx-config *{box-sizing:border-box}#dx-config h2{margin:0 0 8px}#dx-config .dx-intro{margin:0 0 18px}#dx-config .dx-nav{display:flex;flex-wrap:wrap;gap:7px;margin:16px 0}#dx-config button{cursor:pointer;border:1px solid #bdc8b5;background:white;color:#203e35;border-radius:7px;padding:10px 13px;font-size:14px}#dx-config button.dx-active,#dx-config button.dx-picked,#dx-config button.dx-main{background:#203e35;color:white;border-color:#203e35}#dx-config .dx-layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(230px,1fr);gap:18px}#dx-config .dx-card,#dx-config .dx-summary{background:white;border-radius:9px;padding:16px;margin-bottom:12px;border:1px solid #e1e7dc}#dx-config .dx-card h4{margin:0 0 7px}#dx-config .dx-card p{margin:0 0 12px;color:#53645c;font-size:14px}#dx-config .dx-price{font-size:13px;color:#53645c;margin:8px 0}#dx-config .dx-thumb{background:#e7ecdf;min-height:110px;display:flex;align-items:center;justify-content:center;color:#6d8074;font-size:13px;margin-bottom:12px;border-radius:6px;overflow:hidden}#dx-config .dx-thumb img{width:100%;height:160px;object-fit:contain;background:white}#dx-config .dx-summary{position:sticky;top:12px}#dx-config .dx-summary ul{padding-left:18px;font-size:14px}#dx-config .dx-foot{display:flex;justify-content:space-between;gap:8px;margin-top:12px}#dx-config .dx-count{font-size:13px;color:#607367}@media(max-width:700px){#dx-config .dx-layout{grid-template-columns:1fr}#dx-config .dx-summary{position:static}}
-</style>
 <h2>DAEXBO Van Konfigurator</h2>
-<p class="dx-intro">Stelle deinen modularen Ausbau zusammen. Alle Preise zunächst auf Anfrage.</p>
+<p class="dx-intro">Stelle deinen modularen Ausbau zusammen. Produkte ohne hinterlegten Preis werden auf Anfrage angeboten.</p>
 <div id="dx-nav" class="dx-nav"></div>
-<div class="dx-layout"><div><h3 id="dx-heading"></h3><div id="dx-items"></div><div class="dx-foot"><button type="button" id="dx-back" onclick="dxStep(-1)">Zurück</button><button type="button" id="dx-next" class="dx-main" onclick="dxStep(1)">Weiter</button></div></div><aside><div class="dx-summary"><h3>Deine Konfiguration</h3><div id="dx-summary">Noch keine Auswahl.</div><p class="dx-count" id="dx-total"></p><button type="button" class="dx-main" onclick="dxMail()">Konfiguration anfragen</button><p style="font-size:12px;color:#64756a">Es wird eine E-Mail mit deiner Auswahl vorbereitet.</p></div></aside></div>
+<div class="dx-layout">
+  <div>
+    <h3 id="dx-heading"></h3>
+    <div id="dx-items"></div>
+    <div class="dx-foot">
+      <button type="button" id="dx-back" onclick="dxStep(-1)">Zurück</button>
+      <button type="button" id="dx-next" class="dx-main" onclick="dxStep(1)">Weiter</button>
+    </div>
+  </div>
+  <aside>
+    <div class="dx-summary">
+      <h3>Deine Konfiguration</h3>
+      <div id="dx-summary">Noch keine Auswahl.</div>
+      <div class="dx-count" id="dx-total"></div>
+      <button type="button" class="dx-main" onclick="dxMail()">Konfiguration anfragen</button>
+      <p style="font-size:12px;color:#64756a">Es wird eine E-Mail mit deiner Auswahl vorbereitet.</p>
+    </div>
+  </aside>
+</div>
 </div>
 <script>
 /* <![CDATA[ */
-var dxGroups=[
-{name:'Basisfahrzeug',items:[['MAN TGE','man','Basisfahrzeug für den modularen Ausbau'],['Mercedes-Benz Sprinter','sprinter','Alternative Fahrzeugbasis'],['Vorhandenes Fahrzeug','existing','Ausbau eines vorhandenen Fahrzeugs']]},
-{name:'Innenraum',items:[['Gefilzte Verkleidung','felt','Verkleidung des Laderaums'],['Bodenbelag','floor','Robuster Boden für den Van'],['Airlineschienen Seitenwand','rails-side','Flexible Ladungssicherung'],['Airlineschienen Decke','rails-ceiling','Zusätzliche Befestigungsmöglichkeiten'],['Bodenschienen','rails-floor','Schienensystem im Fahrzeugboden'],['Seitenfenster','window','Fenster für den Laderaum'],['Dachhaube','roof','Licht und Belüftung']]},
-{name:'Module & Stauraum',items:[['DAEXBO Stauboxen','boxes','Modularer Stauraum'],['Tablarauszug','drawer','Ausziehbares Staumodul'],['Hängetaschen C-/D-Säule','bags','Seitlicher Stauraum'],['Sperrstange','bar','Variable Ladungssicherung']]},
-{name:'Küche & Wasser',items:[['Küchenmodul','kitchen','Modulare Koch- und Staulösung'],['BOXIO Cook','cook','Mobiles Kochsystem'],['BOXIO Wash','wash','Mobile Waschlösung'],['Wassersystem','water','Wasserversorgung im Fahrzeug']]},
-{name:'Schlafen & Sitzen',items:[['Freitragendes Bett','bed','Schlafsystem im Laderaum'],['DAEXBO Matratze','mattress','Passende Schlafauflage'],['Zusatzsitz','seat','Zusätzliche Sitzmöglichkeit']]},
-{name:'Technik & Zubehör',items:[['Autoterm 2D Standheizung','heater','Diesel-Luftheizung'],['Stromversorgung','power','Energieversorgung für Verbraucher'],['LED-Beleuchtung','lights','Laderaumbeleuchtung'],['Clesana C1','toilet','Mobile Sanitärlösung']]}
+var dxGroups = [
+  {name:'Basisfahrzeug',items:[['MAN TGE','man','Basisfahrzeug für den modularen Ausbau'],['Mercedes-Benz Sprinter','sprinter','Alternative Fahrzeugbasis'],['Vorhandenes Fahrzeug','existing','Ausbau eines vorhandenen Fahrzeugs']]},
+  {name:'Innenraum',items:[['Gefilzte Verkleidung','felt','Verkleidung des Laderaums'],['Bodenbelag','floor','Robuster Boden für den Van'],['Airlineschienen Seitenwand','rails-side','Flexible Ladungssicherung'],['Airlineschienen Decke','rails-ceiling','Zusätzliche Befestigungsmöglichkeiten'],['Bodenschienen','rails-floor','Schienensystem im Fahrzeugboden'],['Seitenfenster','window','Fenster für den Laderaum'],['Dachhaube','roof','Licht und Belüftung']]},
+  {name:'Module & Stauraum',items:[['DAEXBO Stauboxen','boxes','Modularer Stauraum'],['Tablarauszug','drawer','Ausziehbares Staumodul'],['Hängetaschen C-/D-Säule','bags','Seitlicher Stauraum'],['Sperrstange','bar','Variable Ladungssicherung']]},
+  {name:'Küche & Wasser',items:[['Küchenmodul','kitchen','Modulare Koch- und Staulösung'],['BOXIO Cook','cook','Mobiles Kochsystem'],['BOXIO Wash','wash','Mobile Waschlösung'],['Wassersystem','water','Wasserversorgung im Fahrzeug']]},
+  {name:'Schlafen & Sitzen',items:[['Freitragendes Bett','bed','Schlafsystem im Laderaum'],['DAEXBO Matratze','mattress','Passende Schlafauflage'],['Zusatzsitz','seat','Zusätzliche Sitzmöglichkeit']]},
+  {name:'Technik & Zubehör',items:[['Autoterm 2D Standheizung','heater','Diesel-Luftheizung'],['Stromversorgung','power','Energieversorgung für Verbraucher'],['LED-Beleuchtung','lights','Laderaumbeleuchtung'],['Clesana C1','toilet','Mobile Sanitärlösung']]}
 ];
-var dxPrices={}; /* Beispiel: dxPrices['bed']=1490; */
+
+// Hier BRUTTOPREISE in Euro eintragen, z.B. 'boxes': 299.90
+// Leere Einträge bleiben "Preis auf Anfrage".
+var dxPrices = {
+};
 
 var dxImages = {
   'cook': 'https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/Boxiokoch.png',
@@ -35,28 +79,113 @@ var dxImages = {
   'mattress': 'https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/Daexbomatratze.png'
 };
 
-var dxSelected={};var dxCurrent=0;
+var dxSelected = {};
+var dxCurrent = 0;
+var dxTaxRate = 0.19;
 function dxEsc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function dxMoney(n){return Number(n).toLocaleString('de-DE',{style:'currency',currency:'EUR'});}
 function dxChoose(id){dxSelected[id]=!dxSelected[id];dxRender();}
 function dxStep(delta){dxCurrent=Math.max(0,Math.min(dxGroups.length-1,dxCurrent+delta));dxRender();}
 function dxGo(n){dxCurrent=n;dxRender();}
-function dxRender(){
- var nav=document.getElementById('dx-nav'),items=document.getElementById('dx-items'),heading=document.getElementById('dx-heading');if(!nav||!items||!heading)return;
- var n='';for(var g=0;g<dxGroups.length;g++){n+='<button type="button" class="'+(g===dxCurrent?'dx-active':'')+'" onclick="dxGo('+g+')">'+(g+1)+'. '+dxEsc(dxGroups[g].name)+'</button>';}nav.innerHTML=n;
- heading.textContent=dxGroups[dxCurrent].name;var h='';var a=dxGroups[dxCurrent].items;
- for(var i=0;i<a.length;i++){var item=a[i],id=item[1],img=dxImages[id],price=dxPrices[id];h+='<div class="dx-card"><div class="dx-thumb">'+(img?'<img src="'+dxEsc(img)+'" alt="'+dxEsc(item[0])+'">':'Produktbild folgt')+'</div><h4>'+dxEsc(item[0])+'</h4><p>'+dxEsc(item[2])+'</p><div class="dx-price">'+(typeof price==='number'
-  ? dxMoney(price)+' <small style="font-size:11px;color:#777;">inkl. MwSt.</small>'
-  : 'Preis auf Anfrage')+'</div><button type="button" class="'+(dxSelected[id]?'dx-picked':'')+'" onclick="dxChoose(\''+id+'\')">'+(dxSelected[id]?'Ausgewählt ✓ – entfernen':'Auswählen')+'</button></div>';}
- items.innerHTML=h;document.getElementById('dx-back').disabled=dxCurrent===0;document.getElementById('dx-next').disabled=dxCurrent===dxGroups.length-1;
- var list=[],total=0,unknown=0;for(var j=0;j<dxGroups.length;j++){for(var k=0;k<dxGroups[j].items.length;k++){var x=dxGroups[j].items[k];if(dxSelected[x[1]]){var p=dxPrices[x[1]];list.push('<li>'+dxEsc(x[0])+' – '+(typeof p==='number'?dxMoney(p):'Preis auf Anfrage')+'</li>');if(typeof p==='number')total+=p;else unknown++;}}}
- document.getElementById('dx-summary').innerHTML=list.length?'<ul>'+list.join('')+'</ul>':'Noch keine Auswahl.';
- document.getElementById('dx-total').textContent=list.length?(unknown?'Zwischensumme bekannter Preise: '+dxMoney(total)+' · '+unknown+' Position(en) auf Anfrage':'Gesamtsumme: '+dxMoney(total)):'Noch keine Module ausgewählt.';
+function dxTotals(){
+  var gross=0,unknown=0,count=0;
+  for(var g=0;g<dxGroups.length;g++){
+    for(var i=0;i<dxGroups[g].items.length;i++){
+      var id=dxGroups[g].items[i][1];
+      if(dxSelected[id]){
+        count++;
+        if(typeof dxPrices[id]==='number' && Number.isFinite(dxPrices[id]))gross+=dxPrices[id];
+        else unknown++;
+      }
+    }
+  }
+  var net=gross/(1+dxTaxRate);
+  return {gross:gross,net:net,tax:gross-net,unknown:unknown,count:count};
 }
-function dxMail(){var lines=['DAEXBO Van – Konfigurationsanfrage',''];var count=0;for(var g=0;g<dxGroups.length;g++){var groupLines=[];for(var i=0;i<dxGroups[g].items.length;i++){var a=dxGroups[g].items[i];if(dxSelected[a[1]]){var p=dxPrices[a[1]];groupLines.push('- '+a[0]+' ('+(typeof p==='number'?dxMoney(p):'Preis auf Anfrage')+')');count++;}}if(groupLines.length){lines.push(dxGroups[g].name+':');lines=lines.concat(groupLines);lines.push('');}}if(!count){alert('Bitte wähle zuerst mindestens ein Modul aus.');return;}lines.push('Bitte senden Sie mir ein Angebot.');window.location.href='mailto:kontakt@daemmler.de?subject='+encodeURIComponent('DAEXBO Van Konfigurationsanfrage')+'&body='+encodeURIComponent(lines.join('\n'));}
+function dxRender(){
+  var nav=document.getElementById('dx-nav');
+  var items=document.getElementById('dx-items');
+  var heading=document.getElementById('dx-heading');
+  if(!nav||!items||!heading)return;
+  var n='';
+  for(var g=0;g<dxGroups.length;g++){
+    n+='<button type="button" class="'+(g===dxCurrent?'dx-active':'')+'" onclick="dxGo('+g+')">'+(g+1)+'. '+dxEsc(dxGroups[g].name)+'</button>';
+  }
+  nav.innerHTML=n;
+  heading.textContent=dxGroups[dxCurrent].name;
+  var h='';
+  var a=dxGroups[dxCurrent].items;
+  for(var i=0;i<a.length;i++){
+    var item=a[i],id=item[1],img=dxImages[id],price=dxPrices[id];
+    var priced=typeof price==='number' && Number.isFinite(price);
+    h+='<div class="dx-card">'+
+      '<div class="dx-thumb">'+(img?'<img src="'+dxEsc(img)+'" alt="'+dxEsc(item[0])+'">':'Produktbild folgt')+'</div>'+
+      '<h4>'+dxEsc(item[0])+'</h4>'+
+      '<p>'+dxEsc(item[2])+'</p>'+
+      '<div class="dx-price">'+(priced?dxMoney(price)+' <small>inkl. MwSt.</small>':'Preis auf Anfrage')+'</div>'+
+      '<button type="button" class="'+(dxSelected[id]?'dx-picked':'')+'" onclick="dxChoose(\''+id+'\')">'+(dxSelected[id]?'Ausgewählt ✓ – entfernen':'Auswählen')+'</button>'+
+      '</div>';
+  }
+  items.innerHTML=h;
+  document.getElementById('dx-back').disabled=dxCurrent===0;
+  document.getElementById('dx-next').disabled=dxCurrent===dxGroups.length-1;
+  var list=[];
+  for(var j=0;j<dxGroups.length;j++){
+    for(var k=0;k<dxGroups[j].items.length;k++){
+      var x=dxGroups[j].items[k];
+      if(dxSelected[x[1]]){
+        var p=dxPrices[x[1]];
+        var priced=typeof p==='number' && Number.isFinite(p);
+        list.push('<li>'+dxEsc(x[0])+' – '+(priced?dxMoney(p)+' inkl. MwSt.':'Preis auf Anfrage')+'</li>');
+      }
+    }
+  }
+  document.getElementById('dx-summary').innerHTML=list.length?'<ul>'+list.join('')+'</ul>':'Noch keine Auswahl.';
+  var totals=dxTotals();
+  var output='';
+  if(totals.count){
+    if(totals.count>totals.unknown){
+      output='<div class="dx-total-line"><span>Summe netto</span><span>'+dxMoney(totals.net)+'</span></div>'+
+        '<div class="dx-total-line"><span>Umsatzsteuer (19 %)</span><span>'+dxMoney(totals.tax)+'</span></div>'+
+        '<div class="dx-total-line dx-total-gross"><span>'+(totals.unknown?'Zwischensumme brutto':'Gesamtsumme brutto')+'</span><span>'+dxMoney(totals.gross)+'</span></div>';
+    }
+    if(totals.unknown){
+      output+='<div class="dx-total-note">'+totals.unknown+' Position(en) auf Anfrage sind nicht in den Summen enthalten. Die endgültige Gesamtsumme steht erst nach Angebotserstellung fest.</div>';
+    }
+  }else{
+    output='Noch keine Module ausgewählt.';
+  }
+  document.getElementById('dx-total').innerHTML=output;
+}
+function dxMail(){
+  var lines=['DAEXBO Van – Konfigurationsanfrage',''];
+  var count=0;
+  for(var g=0;g<dxGroups.length;g++){
+    var groupLines=[];
+    for(var i=0;i<dxGroups[g].items.length;i++){
+      var a=dxGroups[g].items[i];
+      if(dxSelected[a[1]]){
+        var p=dxPrices[a[1]];
+        var priced=typeof p==='number' && Number.isFinite(p);
+        groupLines.push('- '+a[0]+' ('+(priced?dxMoney(p)+' inkl. MwSt.':'Preis auf Anfrage')+')');
+        count++;
+      }
+    }
+    if(groupLines.length){lines.push(dxGroups[g].name+':');lines=lines.concat(groupLines);lines.push('');}
+  }
+  if(!count){alert('Bitte wähle zuerst mindestens ein Modul aus.');return;}
+  var totals=dxTotals();
+  if(totals.count>totals.unknown){
+    lines.push('Summe netto: '+dxMoney(totals.net));
+    lines.push('Umsatzsteuer (19 %): '+dxMoney(totals.tax));
+    lines.push((totals.unknown?'Zwischensumme':'Gesamtsumme')+' brutto: '+dxMoney(totals.gross));
+  }
+  if(totals.unknown)lines.push(totals.unknown+' Position(en) auf Anfrage, nicht in den Summen enthalten.');
+  lines.push('','Bitte senden Sie mir ein Angebot.');
+  window.location.href='mailto:kontakt@daemmler.de?subject='+encodeURIComponent('DAEXBO Van Konfigurationsanfrage')+'&body='+encodeURIComponent(lines.join('\n'));
+}
 dxRender();
 /* ]]> */
 </script>
-
 </body>
 </html>
