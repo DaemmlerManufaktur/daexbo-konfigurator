@@ -10,6 +10,7 @@
 .card.package{display:flex;grid-column:1/-1}.package .thumb{height:220px;min-height:0}.package-items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:3px 0 20px}.package-item{border:1px solid #d7e2d4;background:#f0f5ed;border-radius:9px;padding:12px;font-size:13px;line-height:1.5}.package-item span{color:var(--green);font-weight:bold}.card.package .content h3{font-size:23px}.card.package .thumb:has(.placeholder){display:none}
 @media(max-width:550px){.package-items{grid-template-columns:1fr}}
 .package-item-image{display:block;width:100%;height:110px;object-fit:contain;margin-bottom:8px}
+.cards.overview{display:block}.review-item{display:flex;align-items:flex-start;gap:14px;border-bottom:1px solid var(--line);padding:18px 0}.review-item>img{width:80px;height:80px;object-fit:contain;flex-shrink:0}.review-item>div{flex:1;min-width:0}.review-item h3{font-size:16px;margin:5px 0 8px}.review-item>strong{font-size:13px;white-space:nowrap}.review-group{font-size:11px;color:var(--muted)}.review-total{margin-top:24px;padding:18px;background:var(--sage);border-radius:12px}.review-item .package-items{grid-template-columns:1fr}.review-item .package-item-image{height:80px}@media(max-width:550px){.review-item{flex-wrap:wrap}.review-item>img{width:60px;height:60px}.review-item>strong{width:100%;text-align:right}}
 </style></head><body><main class="shell"><header class="hero"><div class="brand">DAEX_Van</div><div class="eyebrow">MODULAR · FLEXIBEL · DEIN VAN</div><h1>Dein Van. Deine Freiheit.<br>Deine Konfiguration.</h1><p>Stelle deinen modularen Van-Ausbau zusammen – mit durchdachten Lösungen für Alltag und Abenteuer.</p></header><nav id="dx-nav" class="progress" aria-label="Konfigurationsschritte"></nav><div class="layout"><section class="panel"><div class="sectionhead"><h2 id="dx-heading"></h2><p id="dx-subheading"></p></div><div id="dx-items" class="cards"></div><div class="foot"><button type="button" id="dx-back" onclick="dxStep(-1)">← Zurück</button><button type="button" class="primary" id="dx-next" onclick="dxStep(1)">Weiter →</button></div></section><aside class="sidebar"><div class="side-head"><div class="mini">DEIN DAEXBO VAN</div><h2>Deine Konfiguration</h2></div><div id="dx-summary"></div><div id="dx-total" class="totals"></div><button type="button" class="mail" onclick="dxMail()">✉ Unverbindlich anfragen →</button><p class="note">Es wird eine E-Mail mit deiner Auswahl vorbereitet. Preise und Verfügbarkeit werden im Angebot bestätigt.</p></aside></div><footer class="benefits"><span>◇ <b>Modular erweiterbar</b> – jederzeit</span><span>✓ <b>Durchdachte Lösungen</b></span><span>▣ <b>Flexible Nutzung</b> im Alltag</span></footer></main>
 <script>
 'use strict';
@@ -21,7 +22,8 @@ var dxGroups=[
 {"name": "Sitzen & Schlafen", "desc": "Wähle deine Sitz- und Schlafausstattung.", "items": [["Zusatzsitz Schnierle VanX", "seat-vanx", "Zusätzlicher Sitz Schnierle VanX. Preis pro Stück."], ["Zusatzsitz Schnierle Linea", "seat-linea", "Zusätzlicher Sitz Schnierle Linea. Preis pro Stück."], ["Zusatzsitz AMF", "seat-amf", "Zusätzlicher Sitz AMF. Preis pro Stück."], ["DAEXBO Matratze für Längsschläfer", "mattress-long", "Matratze für die Längsschläfer-Konfiguration."], ["Bettstangen-Set", "bed-bars", "Stangenset für das Bett."], ["FLEXEBU-Klappschlafdach", "roof-flexebu", "Klappschlafdach für deinen Van."]]},
 {"name": "Module", "desc": "Stelle deine DAEXBO Module und deinen Stauraum zusammen.", "items": [["DAEXBO Modul Längs", "module-long", "Längsmodul für deinen modularen Ausbau."], ["DAEXBO Modul Quer", "module-cross", "Quermodul für deinen modularen Ausbau."], ["DAEXBO Hängetasche aus Kunstleder", "bag-leather", "Hängetasche in Kunstleder."], ["DAEXBO Hängetasche aus Stoff", "bag-fabric", "Hängetasche in Stoff."], ["DAEXBO Bodentisch", "floor-table", "Bodentisch für deinen Van."], ["DAEXBO Hecktürpaneel", "rear-panel", "Paneel für die Hecktür."], ["Eurobox grau", "eurobox", "Eurobox in Grau."], ["Container", "container", "Container für zusätzlichen Stauraum."]]},
 {"name": "Küchen & Wasser", "desc": "Wähle die Küche für deine Reisen.", "items": [["DAEXBO Modulküche", "kitchen-module", "Modulküche für deinen DAEX_Van."], ["DAEXBO Outdoorküche", "kitchen-outdoor", "Outdoorküche für unterwegs."]]},
-{"name": "Technik & Zubehör", "desc": "Ergänze Energieversorgung und Zubehör.", "items": [["Elektropaket L", "power-l", "Elektropaket L. Umfang und Aufpreis stimmen wir im Angebot ab."], ["Elektropaket XL", "power-xl", "Elektropaket XL. Umfang und Aufpreis stimmen wir im Angebot ab."], ["Autoterm Diesel-Standheizung 2 kW", "heater", "Diesel-Standheizung mit 2 kW."], ["Alphadynamik ETB Trittstufe für die Schiebetür", "step-etb", "Trittstufe für die Schiebetür."], ["Zusatzlicht Fahrzeuggrill", "grill-light", "Zusatzlicht im Fahrzeuggrill."], ["Markise Fiamma F45 3,5 Meter", "awning", "Markise mit 3,5 Metern Länge."], ["EcoFlow faltbares Solarfeld 160 Wp", "solar", "Faltbares Solarfeld mit 160 Wp."], ["DAEXBO Sperrstange", "bar", "Sperrstange für deinen modularen Ausbau."], ["BOXIO WASH", "wash", "Mobile Waschlösung."], ["BOXIO Trenntoilette", "toilet-boxio", "Mobile Trenntoilette."], ["Clesana X1", "toilet", "Sanitärlösung Clesana X1."]]}
+{"name": "Technik & Zubehör", "desc": "Ergänze Energieversorgung und Zubehör.", "items": [["Elektropaket L", "power-l", "Elektropaket L. Umfang und Aufpreis stimmen wir im Angebot ab."], ["Elektropaket XL", "power-xl", "Elektropaket XL. Umfang und Aufpreis stimmen wir im Angebot ab."], ["Steckdosenpaket DC 12 V", "socket-dc12", "Steckdosenpaket für 12-V-Gleichstromverbraucher."], ["Steckdosenpaket DC USB", "socket-usb", "USB-Steckdosenpaket für deinen Van."], ["Steckdosenpaket AC 230 V", "socket-ac230", "Steckdosenpaket für 230-V-Wechselstromverbraucher."], ["EcoFlow Ladebooster 1000", "booster-1000", "EcoFlow Ladebooster 1000."], ["Autoterm Diesel-Standheizung 2 kW", "heater", "Diesel-Standheizung mit 2 kW."], ["Alphadynamik ETB Trittstufe für die Schiebetür", "step-etb", "Trittstufe für die Schiebetür."], ["Zusatzlicht Fahrzeuggrill", "grill-light", "Zusatzlicht im Fahrzeuggrill."], ["Markise Fiamma F45 3,5 Meter", "awning", "Markise mit 3,5 Metern Länge."], ["EcoFlow faltbares Solarfeld 160 Wp", "solar", "Faltbares Solarfeld mit 160 Wp."], ["DAEXBO Sperrstange", "bar", "Sperrstange für deinen modularen Ausbau."], ["BOXIO WASH", "wash", "Mobile Waschlösung."], ["BOXIO Trenntoilette", "toilet-boxio", "Mobile Trenntoilette."], ["Clesana X1", "toilet", "Sanitärlösung Clesana X1."]]},
+{"name": "Gesamtkonfiguration", "desc": "Prüfe deine gesamte Auswahl. Über die Schritte oben kannst du Änderungen vornehmen.", "items": []}
 ];
 // Bruttopreise: null = auf Anfrage; Zahl = Preis in Euro. Mengenauswahl: Preis pro Stück.
 // Elektropaket L/XL: Hier den Aufpreis gegenüber dem Basispaket eintragen.
@@ -31,39 +33,43 @@ var dxPrices={
   "sprinter1": null,
   "sprinter2": null,
   "existing": null,
-  "basic": null,
-  "window": null,
-  "rail-schnierle": null,
-  "rail-amf": null,
-  "curtain-b": null,
-  "curtain-d": null,
-  "seat-vanx": null,
+  "basic": 19900,
+  "window": 1250,
+  "rail-schnierle": 1500,
+  "rail-amf": 1300,
+  "curtain-b": 450,
+  "curtain-d": 450,
+  "seat-vanx": 1750,
   "seat-linea": null,
   "seat-amf": null,
-  "mattress-long": null,
-  "bed-bars": null,
-  "roof-flexebu": null,
-  "module-long": null,
-  "module-cross": null,
-  "bag-leather": null,
-  "bag-fabric": null,
-  "floor-table": null,
-  "rear-panel": null,
-  "eurobox": null,
-  "container": null,
-  "kitchen-module": null,
-  "kitchen-outdoor": null,
-  "power-l": null,
-  "power-xl": null,
-  "step-etb": null,
-  "grill-light": null,
-  "awning": null,
-  "bar": null,
-  "wash": null,
-  "toilet-boxio": null,
-  "toilet": null,
-  "heater": null,
-  "solar": null
+  "mattress-long": 1050,
+  "bed-bars": 780,
+  "roof-flexebu": 12000,
+  "module-long": 650,
+  "module-cross": 650,
+  "bag-leather": 600,
+  "bag-fabric": 500,
+  "floor-table": 380,
+  "rear-panel": 330,
+  "eurobox": 25,
+  "container": 95,
+  "kitchen-module": 1700,
+  "kitchen-outdoor": 2600,
+  "power-l": 1500,
+  "power-xl": 9750,
+  "step-etb": 2350,
+  "grill-light": 1780,
+  "awning": 1600,
+  "bar": 260,
+  "wash": 153,
+  "toilet-boxio": 136,
+  "toilet": 990,
+  "heater": 2500,
+  "solar": 970,
+  "socket-dc12": null,
+  "socket-usb": null,
+  "socket-ac230": null,
+  "booster-1000": null
 };
 // Bilder: Bestehende, funktionierende GitHub-URLs beibehalten.
 // GitHub-Bildadressen: Groß-/Kleinschreibung der Dateinamen beachten. Leere Einträge zeigen einen Platzhalter.
@@ -73,40 +79,44 @@ var dxImages={
   "sprinter1": "https://image.jimcdn.com/app/cms/image/transf/dimension=1070x10000:format=jpg/path/s9fdcd5c46bd02565/image/if15b0e62fededbc4/version/1791973809/image.jpg",
   "sprinter2": "https://image.jimcdn.com/app/cms/image/transf/dimension=1070x10000:format=jpg/path/s9fdcd5c46bd02565/image/if15b0e62fededbc4/version/1791973809/image.jpg",
   "existing": "https://image.jimcdn.com/app/cms/image/transf/dimension=1070x10000:format=png/path/s9fdcd5c46bd02565/image/i908e5e648f6c3f1f/version/1791973499/image.png",
-  "basic": "",
+  "basic": "https://image.jimcdn.com/app/cms/image/transf/dimension=1070x10000:format=jpg/path/s9fdcd5c46bd02565/image/ief4f88ee7fa71142/version/1791973538/image.jpg",
   "window": "",
   "rail-schnierle": "",
   "rail-amf": "",
   "curtain-b": "",
   "curtain-d": "",
-  "seat-vanx": "",
+  "seat-vanx": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/4.png",
   "seat-linea": "",
-  "seat-amf": "",
-  "mattress-long": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/Daexbomatratze.png",
-  "bed-bars": "",
-  "roof-flexebu": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/Schlafdach.jpg",
-  "module-long": "",
-  "module-cross": "https://github.com/DaemmlerManufaktur/daexbo-konfigurator/blob/main/19.png?raw=true",
-  "bag-leather": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/DaexboTasche.png",
-  "bag-fabric": "",
+  "seat-amf": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/2.png",
+  "mattress-long": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/9.png",
+  "bed-bars": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/6.png",
+  "roof-flexebu": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/5.png",
+  "module-long": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/20.png",
+  "module-cross": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/19.png",
+  "bag-leather": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/23.png",
+  "bag-fabric": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/22.png",
   "floor-table": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/Tisch.jpg",
-  "rear-panel": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/panel.jpg",
-  "eurobox": "https://github.com/DaemmlerManufaktur/daexbo-konfigurator/blob/main/16.png?raw=true",
-  "container": "https://github.com/DaemmlerManufaktur/daexbo-konfigurator/blob/main/12.png?raw=true",
-  "kitchen-module": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/modulk%C3%BCche.png",
-  "kitchen-outdoor": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/Outdoork%C3%BCche.png",
+  "rear-panel": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/Panel.jpg",
+  "eurobox": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/16.png",
+  "container": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/12.png",
+  "kitchen-module": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/7.png",
+  "kitchen-outdoor": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/8.png",
   "power-l": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/EcDel.png",
-  "power-xl": "https://github.com/DaemmlerManufaktur/daexbo-konfigurator/blob/main/11.png?raw=true",
-  "step-etb": "",
+  "power-xl": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/11.png",
+  "step-etb": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/ETB.jpg",
   "grill-light": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/Frontlicht.jpg",
-  "awning": "https://github.com/DaemmlerManufaktur/daexbo-konfigurator/blob/main/18.png?raw=true",
-  "bar": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/Sperrstange.png",
-  "wash": "https://github.com/DaemmlerManufaktur/daexbo-konfigurator/blob/main/13.png?raw=true",
-  "toilet-boxio": "https://github.com/DaemmlerManufaktur/daexbo-konfigurator/blob/main/14.png?raw=true",
-  "toilet": "https://github.com/DaemmlerManufaktur/daexbo-konfigurator/blob/main/15.png?raw=true",
-  "heater": "https://github.com/DaemmlerManufaktur/daexbo-konfigurator/blob/main/17.png?raw=true",
-  "power-start": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/Ecdel.png",
-  "solar": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/74ba15f415b236150e06ba66fb45a17831f40029/10.png"
+  "awning": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/18.png",
+  "bar": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/6.png",
+  "wash": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/13.png",
+  "toilet-boxio": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/14.png",
+  "toilet": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/15.png",
+  "heater": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/17.png",
+  "power-start": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/EcDel.png",
+  "solar": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/10.png",
+  "socket-dc12": "",
+  "socket-usb": "",
+  "socket-ac230": "",
+  "booster-1000": ""
 };
 // Diese Einzelmodule sind im Basispaket enthalten und werden nicht zusätzlich berechnet.
 var dxPackageItems=[["Gefilzte Verkleidung", "felt"], ["VANUE-Dämmung", "insulation"], ["Dämmler XPS-Dämmbodenplatte mit PVC-Belag", "floor"], ["2 × Airlineschienen Decke", "rails-ceiling"], ["2 × Airlineschienen Wände", "rails-side"], ["2 × Airlineschienen Boden", "rails-floor"], ["Designpaneele Decke mit LED-Lichtstreifen", "ceiling-led"], ["Dachhaube vorn", "roof-front"], ["Ventilationsdachhaube hinten", "roof-rear"], ["Elektropaket \"Start\"", "power-start"]];
@@ -126,17 +136,19 @@ function dxCount(id){return dxQuantity(id)?Number(dxSelected[id]||0):(dxSelected
 function dxSetQuantity(id,value){if(!dxQuantity(id)||dxIncluded(id))return;var n=Number(value);dxSelected[id]=Number.isFinite(n)?Math.max(0,Math.floor(n)):0;dxRender();}
 function dxAdjustQuantity(id,delta){dxSetQuantity(id,dxCount(id)+delta);}
 function dxQuantityControl(id,name){var q=dxCount(id);return '<div class="quantity-control"><label for="qty-'+id+'">Anzahl</label><button type="button" aria-label="Anzahl verringern" onclick="dxAdjustQuantity(\''+id+'\',-1)" '+(q===0?'disabled':'')+'>−</button><input id="qty-'+id+'" type="number" min="0" step="1" value="'+q+'" aria-label="Anzahl '+dxEsc(name)+'" onchange="dxSetQuantity(\''+id+'\',this.value)"><button type="button" aria-label="Anzahl erhöhen" onclick="dxAdjustQuantity(\''+id+'\',1)">+</button></div>';}
-function dxStep(delta){dxCurrent=Math.max(0,Math.min(dxGroups.length-1,dxCurrent+delta));dxRender();}
+function dxStep(delta){if(delta>0&&dxCurrent===dxGroups.length-1){dxMail();return;}dxCurrent=Math.max(0,Math.min(dxGroups.length-1,dxCurrent+delta));dxRender();}
 function dxGo(n){dxCurrent=n;dxRender();}
 function dxGetSelection(){var chosen=[],total=0,unknown=0;for(var g=0;g<dxGroups.length;g++){for(var i=0;i<dxGroups[g].items.length;i++){var x=dxGroups[g].items[i],id=x[1];if(dxSelected[id]&&!dxIncluded(id)){var p=dxPrices[id];var q=dxCount(id);chosen.push({id:id,name:x[0],price:p,quantity:q,group:dxGroups[g].name});if(typeof p==='number'&&Number.isFinite(p))total+=p*q;else unknown++;}}}return {chosen:chosen,total:total,unknown:unknown};}
 function dxRender(){var nav=document.getElementById('dx-nav'),items=document.getElementById('dx-items');if(!nav||!items)return;
 nav.innerHTML=dxGroups.map(function(g,i){return '<button type="button" class="step '+(i===dxCurrent?'active':'')+'" onclick="dxGo('+i+')"><span class="num">'+(i+1)+'</span>'+dxEsc(g.name)+'</button>';}).join('');
 document.getElementById('dx-heading').textContent=(dxCurrent+1)+'. '+dxGroups[dxCurrent].name;document.getElementById('dx-subheading').textContent=dxGroups[dxCurrent].desc;
 items.innerHTML=dxGroups[dxCurrent].items.map(function(x){var name=x[0],id=x[1],description=x[2],img=dxImages[id],p=dxPrices[id],inc=dxIncluded(id),selected=!!dxSelected[id],isPackage=id==='basic';var label=inc?'Im Basispaket enthalten':selected?'Ausgewählt ✓ – entfernen':'Auswählen';var pic=img?'<img src="'+dxEsc(img)+'" alt="'+dxEsc(name)+'" loading="lazy">':'<div class="placeholder"><span class="symbol">◇</span>Produktbild folgt</div>';var price=inc?'<span class="pill in">Im Basispaket enthalten</span>':typeof p==='number'&&Number.isFinite(p)?'<div class="price">'+dxMoney(p)+'<small>inkl. 19 % MwSt.'+(dxQuantity(id)?' / Stück':'')+'</small></div>':'<div class="price" style="font-size:16px">Preis auf Anfrage</div>';return '<article class="card '+(isPackage?'package ':'')+(selected||inc?'selected ':'')+(inc?'included':'')+'"><div class="thumb">'+pic+'</div><div class="content">'+(isPackage?'<span class="pill">Empfohlen · standardmäßig ausgewählt</span>':'')+'<h3>'+dxEsc(name)+'</h3><p>'+dxDescription(description)+'</p>'+(isPackage?dxPackageDetails():'')+price+(dxQuantity(id)&&!inc?dxQuantityControl(id,name):'<button type="button" class="choose '+(selected?'on':'')+'" onclick="dxChoose(\''+id+'\')" '+(inc?'disabled':'')+'>'+label+'</button>')+'</div></article>';}).join('');
-document.getElementById('dx-back').disabled=dxCurrent===0;document.getElementById('dx-next').disabled=dxCurrent===dxGroups.length-1;
+document.getElementById('dx-back').disabled=dxCurrent===0;document.getElementById('dx-next').disabled=false;document.getElementById('dx-next').textContent=dxCurrent===dxGroups.length-1?'Konfiguration anfragen →':dxCurrent===dxGroups.length-2?'Gesamtkonfiguration ansehen →':'Weiter →';
 var s=dxGetSelection();document.getElementById('dx-summary').innerHTML=s.chosen.length?'<ul class="summary-list">'+s.chosen.map(function(x){return '<li><span>'+(dxQuantity(x.id)?x.quantity+' × ':'')+dxEsc(x.name)+(x.id==='basic'?'<span class="small">'+dxEsc(dxPackageText())+'</span>':'')+'</span><span class="value">'+(typeof x.price==='number'?dxMoney(x.price*x.quantity):'Auf Anfrage')+'</span></li>';}).join('')+'</ul>':'<p class="empty">Noch keine Auswahl.</p>';
 var netto=s.total/1.19,mwst=s.total-netto;document.getElementById('dx-total').innerHTML=s.chosen.length?'<div class="sumrow"><span>Zwischensumme netto</span><strong>'+dxMoney(netto)+'</strong></div><div class="sumrow"><span>Umsatzsteuer (19 %)</span><strong>'+dxMoney(mwst)+'</strong></div><div class="sumrow final"><span>Brutto inkl. MwSt.</span><span>'+dxMoney(s.total)+'</span></div>'+(s.unknown?'<div class="unknown">'+s.unknown+' Position(en) auf Anfrage sind in der Summe noch nicht enthalten. Die angezeigte Summe ist daher keine endgültige Gesamtsumme.</div>':''):'<p class="empty">Noch keine Preise berechenbar.</p>';
+if(dxCurrent===dxGroups.length-1){items.innerHTML=dxOverview(s);items.classList.add('overview');}else{items.classList.remove('overview');}
 }
+function dxOverview(s){if(!s.chosen.length)return '<p class="empty">Du hast noch keine Ausstattung ausgewählt. Wähle deine Bausteine in den vorherigen Schritten.</p>';return '<div class="overview-content">'+s.chosen.map(function(x){var img=dxImages[x.id];return '<article class="review-item">'+(img?'<img src="'+dxEsc(img)+'" alt="'+dxEsc(x.name)+'" loading="lazy">':'')+'<div><span class="review-group">'+dxEsc(x.group)+'</span><h3>'+(dxQuantity(x.id)?x.quantity+' × ':'')+dxEsc(x.name)+'</h3>'+(x.id==='basic'?dxPackageDetails():'')+(dxQuantity(x.id)&&typeof x.price==='number'?'<p class="note">Stückpreis: '+dxMoney(x.price)+'</p>':'')+'</div><strong>'+(typeof x.price==='number'?dxMoney(x.price*x.quantity):'Auf Anfrage')+'</strong></article>';}).join('')+'<div class="review-total"><h3>Preisübersicht</h3>'+document.getElementById('dx-total').innerHTML+'</div><p class="note">Deine Auswahl wird als unverbindliche Anfrage in deinem E-Mail-Programm geöffnet.</p></div>'; }
 function dxMail(){var s=dxGetSelection();if(!s.chosen.length){alert('Bitte wähle mindestens ein Modul aus.');return;}var lines=['DAEXBO Van – Konfigurationsanfrage',''];s.chosen.forEach(function(x){lines.push('- '+(dxQuantity(x.id)?x.quantity+' × ':'')+x.name+' ('+(typeof x.price==='number'?dxMoney(x.price*x.quantity)+' brutto':'Preis auf Anfrage')+')');if(x.id==='basic')lines.push('  Enthalten: '+dxPackageText());});lines.push('','Zwischensumme netto: '+dxMoney(s.total/1.19),'Umsatzsteuer (19 %): '+dxMoney(s.total-s.total/1.19),'Zwischensumme brutto: '+dxMoney(s.total));if(s.unknown)lines.push('Zusätzlich '+s.unknown+' Position(en) auf Anfrage (nicht in den Summen enthalten).');lines.push('','Bitte senden Sie mir ein unverbindliches Angebot.');window.location.href='mailto:kontakt@daemmler.de?subject='+encodeURIComponent('DAEXBO Van Konfigurationsanfrage')+'&body='+encodeURIComponent(lines.join('\n'));}
 dxRender();
 </script></body></html>
