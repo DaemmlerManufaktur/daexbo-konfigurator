@@ -9,18 +9,19 @@
 .quantity-control label{font-size:12px;color:var(--muted)}
 .card.package{display:flex;grid-column:1/-1}.package .thumb{height:220px;min-height:0}.package-items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:3px 0 20px}.package-item{border:1px solid #d7e2d4;background:#f0f5ed;border-radius:9px;padding:12px;font-size:13px;line-height:1.5}.package-item span{color:var(--green);font-weight:bold}.card.package .content h3{font-size:23px}.card.package .thumb:has(.placeholder){display:none}
 @media(max-width:550px){.package-items{grid-template-columns:1fr}}
+.package-item-image{display:block;width:100%;height:110px;object-fit:contain;margin-bottom:8px}
 </style></head><body><main class="shell"><header class="hero"><div class="brand">DAEX_Van</div><div class="eyebrow">MODULAR · FLEXIBEL · DEIN VAN</div><h1>Dein Van. Deine Freiheit.<br>Deine Konfiguration.</h1><p>Stelle deinen modularen Van-Ausbau zusammen – mit durchdachten Lösungen für Alltag und Abenteuer.</p></header><nav id="dx-nav" class="progress" aria-label="Konfigurationsschritte"></nav><div class="layout"><section class="panel"><div class="sectionhead"><h2 id="dx-heading"></h2><p id="dx-subheading"></p></div><div id="dx-items" class="cards"></div><div class="foot"><button type="button" id="dx-back" onclick="dxStep(-1)">← Zurück</button><button type="button" class="primary" id="dx-next" onclick="dxStep(1)">Weiter →</button></div></section><aside class="sidebar"><div class="side-head"><div class="mini">DEIN DAEXBO VAN</div><h2>Deine Konfiguration</h2></div><div id="dx-summary"></div><div id="dx-total" class="totals"></div><button type="button" class="mail" onclick="dxMail()">✉ Unverbindlich anfragen →</button><p class="note">Es wird eine E-Mail mit deiner Auswahl vorbereitet. Preise und Verfügbarkeit werden im Angebot bestätigt.</p></aside></div><footer class="benefits"><span>◇ <b>Modular erweiterbar</b> – jederzeit</span><span>✓ <b>Durchdachte Lösungen</b></span><span>▣ <b>Flexible Nutzung</b> im Alltag</span></footer></main>
 <script>
 'use strict';
 // Produktname und Beschreibung im Array bearbeiten; Kennung (z. B. 'boxes') unverändert lassen.
 var dxGroups=[
-{name:'Basisfahrzeug',desc:'Wähle die Grundlage für deinen DAEXBO Van.',items:[['MAN TGE 4x2 Diesel','man1','MAN TGE 2.Gen.<br>4-Zylinder-Diesel, L3H3 (5986mm / 2625mm) <br>  Antrieb: 4x2 / 4x4 Leistung: 140PS / 176PS <br> Getriebe: 8-Gang-Automatikgetriebe / 6-Gang-Schaltgetriebe Neuwagen / Gebrauchtwagen'],['MAN TGE 4x4 Diesel','man2','MAN TGE 2.Gen. 4-Zylinder-Diesel, L3H3 (5986mm / 2625mm) <br>  Antrieb: 4x4 / 4x4 Leistung: 140PS / 176PS <br> Getriebe: 8-Gang-Automatikgetriebe / 6-Gang-Schaltgetriebe Neuwagen / Gebrauchtwagen'],['Mercedes-Benz Sprinter 4x2 Diesel','sprinter1','4-Zylinder-Diesel <br> L2H2 (5932mm / 2616mm) <br> Antrieb: 4x2 Leistung: 150PS / 170PS <br> Getriebe: 9-Gang-Tronic-Automatikgetreibe / 6-Gang Schaltgetriebe Neuwagen / Gebrauchtwagen'],['Mercedes-Benz Sprinter 4x4 Diesel','sprinter2','4-Zylinder-Diesel <br> L2H2 (5932mm / 2616mm) <br> Antrieb: 4x4 Leistung: 150PS / 170PS <br> Getriebe: 9-Gang-Tronic-Automatikgetreibe / 6-Gang Schaltgetriebe Neuwagen / Gebrauchtwagen'],['Dein vorhandenes Fahrzeug','existing','Du hast schon ein Fahrzeug? Dann machen wir doch einfach daraus einen Daex_Van! Egal bei welchen Dach oder welche Marke, wir passen das System auf dein Fahrzeug an, Optimiere mit uns einfach dein Liebling. ']]},
+{name:'Basisfahrzeug',desc:'Wähle die Grundlage für deinen DAEXBO Van.',items:[['MAN TGE 4x2 Diesel','man1','MAN TGE, 2. Generation<br>Vierzylinder-Diesel, L3H3 (5.986 mm / 2.625 mm) <br>  Antrieb: 4x2 / 4x4 Leistung: 140 PS / 176 PS <br> Getriebe: 8-Gang-Automatikgetriebe / 6-Gang-Schaltgetriebe Neuwagen / Gebrauchtwagen'],['MAN TGE 4x4 Diesel','man2','MAN TGE, 2. Generation Vierzylinder-Diesel, L3H3 (5.986 mm / 2.625 mm) <br>  Antrieb: 4x4 / 4x4 Leistung: 140 PS / 176 PS <br> Getriebe: 8-Gang-Automatikgetriebe / 6-Gang-Schaltgetriebe Neuwagen / Gebrauchtwagen'],['Mercedes-Benz Sprinter 4x2 Diesel','sprinter1','Vierzylinder-Diesel <br> L2H2 (5.932 mm / 2.616 mm) <br> Antrieb: 4x2 Leistung: 150 PS / 170 PS <br> Getriebe: 9G-TRONIC-Automatikgetriebe / 6-Gang-Schaltgetriebe Neuwagen / Gebrauchtwagen'],['Mercedes-Benz Sprinter 4x4 Diesel','sprinter2','Vierzylinder-Diesel <br> L2H2 (5.932 mm / 2.616 mm) <br> Antrieb: 4x4 Leistung: 150 PS / 170 PS <br> Getriebe: 9G-TRONIC-Automatikgetriebe / 6-Gang-Schaltgetriebe Neuwagen / Gebrauchtwagen'],['Dein vorhandenes Fahrzeug','existing','Du hast schon ein Fahrzeug? Dann machen wir doch einfach daraus einen DAEX_Van! Unabhängig von Dachform und Marke passen wir das System an dein Fahrzeug an. Optimiere mit uns deinen Lieblingsvan.']]},
 {"name": "Grundausbau", "desc": "Das DAEX_Van Basispaket bildet die Grundlage für deinen modularen Ausbau.", "items": [["DAEX_Van Basispaket", "basic", "Dein Grundausbau mit den folgenden zehn enthaltenen Leistungen:"]]},
-{"name": "Innenausbau", "desc": "Ergänze Fenster, Bodenschienen und Trennvorhänge.", "items": [["Seitenfenster Carbest RW Van 750mm x 450mm", "window", "Seitenfenster für deinen Van."], ["Schnierle Bodenschiene 3,5 Meter", "rail-schnierle", "Bodenschiene mit 3,5 Metern Länge. Preis pro Stück."], ["AMF Bodenschiene 3,5 Meter", "rail-amf", "Bodenschiene mit 3,5 Metern Länge."], ["Trennvorhang B-Säule", "curtain-b", "Trennvorhang im Bereich der B-Säule."], ["Trennvorhang D-Säule", "curtain-d", "Trennvorhang im Bereich der D-Säule."]]},
-{"name": "Sitzen & Schlafen", "desc": "Wähle deine Sitz- und Schlafausstattung.", "items": [["Zusatzsitz Schnierle VanX", "seat-vanx", "Zusätzlicher Sitz Schnierle VanX. Preis pro Stück."], ["Zusatzsitz Schnierle Linea", "seat-linea", "Zusätzlicher Sitz Schnierle Linea. Preis pro Stück."], ["Zusatzsitz AMF", "seat-amf", "Zusätzlicher Sitz AMF. Preis pro Stück."], ["Daexbo_Matratze Längsschläfer", "mattress-long", "Matratze für die Längsschläfer-Konfiguration."], ["Bettstangen Set", "bed-bars", "Stangenset für das Bett."], ["FLEXEBU-Klappschlafdach", "roof-flexebu", "Klappschlafdach für deinen Van."]]},
-{"name": "Module", "desc": "Stelle deine DAEXBO Module und deinen Stauraum zusammen.", "items": [["Daexbo_Modul Längs", "module-long", "Längsmodul für deinen modularen Ausbau."], ["Daexbo_Modul Quer", "module-cross", "Quermodul für deinen modularen Ausbau."], ["Daexbo_Hängetasche Kunstleder", "bag-leather", "Hängetasche in Kunstleder."], ["Daexbo_Hängetasche Stoff", "bag-fabric", "Hängetasche in Stoff."], ["Daexbo_Bodentisch", "floor-table", "Bodentisch für deinen Van."], ["Daexbo_Hecktürpaneel", "rear-panel", "Paneel für die Hecktür."], ["Eurobox Grau", "eurobox", "Eurobox in Grau."], ["Container", "container", "Container für zusätzlichen Stauraum."]]},
-{"name": "Küchen & Wasser", "desc": "Wähle die Küche für deine Reisen.", "items": [["Daexbo_Modulküche", "kitchen-module", "Modulküche für deinen DAEX_Van."], ["Daexbo_Outdoorküche", "kitchen-outdoor", "Outdoorküche für unterwegs."]]},
-{"name": "Technik & Zubehör", "desc": "Ergänze Energieversorgung und Zubehör.", "items": [["Elektropaket L", "power-l", "Elektropaket L. Umfang und Aufpreis stimmen wir im Angebot ab."], ["Elektropaket XL", "power-xl", "Elektropaket XL. Umfang und Aufpreis stimmen wir im Angebot ab."], ["Trittstufe Alphadynamik ETB Schiebetür", "step-etb", "Trittstufe für die Schiebetür."], ["Zusatzlicht Grill", "grill-light", "Zusatzlicht im Fahrzeuggrill."], ["Markise 3,5 Meter", "awning", "Markise mit 3,5 Metern Länge."], ["Daexbo_Sperrstange", "bar", "Sperrstange für deinen modularen Ausbau."], ["Boxio Wasch", "wash", "Mobile Waschlösung."], ["Boxio Trenntoilette", "toilet-boxio", "Mobile Trenntoilette."], ["Clesana C1", "toilet", "Sanitärlösung Clesana C1."]]}
+{"name": "Innenausbau", "desc": "Ergänze Fenster, Bodenschienen und Trennvorhänge.", "items": [["Seitenfenster Carbest RW Van 750 mm × 450 mm", "window", "Seitenfenster für deinen Van."], ["Schnierle Bodenschiene 3,5 Meter", "rail-schnierle", "Bodenschiene mit 3,5 Metern Länge. Preis pro Stück."], ["AMF Bodenschiene 3,5 Meter", "rail-amf", "Bodenschiene mit 3,5 Metern Länge."], ["Trennvorhang B-Säule", "curtain-b", "Trennvorhang im Bereich der B-Säule."], ["Trennvorhang D-Säule", "curtain-d", "Trennvorhang im Bereich der D-Säule."]]},
+{"name": "Sitzen & Schlafen", "desc": "Wähle deine Sitz- und Schlafausstattung.", "items": [["Zusatzsitz Schnierle VanX", "seat-vanx", "Zusätzlicher Sitz Schnierle VanX. Preis pro Stück."], ["Zusatzsitz Schnierle Linea", "seat-linea", "Zusätzlicher Sitz Schnierle Linea. Preis pro Stück."], ["Zusatzsitz AMF", "seat-amf", "Zusätzlicher Sitz AMF. Preis pro Stück."], ["DAEXBO Matratze für Längsschläfer", "mattress-long", "Matratze für die Längsschläfer-Konfiguration."], ["Bettstangen-Set", "bed-bars", "Stangenset für das Bett."], ["FLEXEBU-Klappschlafdach", "roof-flexebu", "Klappschlafdach für deinen Van."]]},
+{"name": "Module", "desc": "Stelle deine DAEXBO Module und deinen Stauraum zusammen.", "items": [["DAEXBO Modul Längs", "module-long", "Längsmodul für deinen modularen Ausbau."], ["DAEXBO Modul Quer", "module-cross", "Quermodul für deinen modularen Ausbau."], ["DAEXBO Hängetasche aus Kunstleder", "bag-leather", "Hängetasche in Kunstleder."], ["DAEXBO Hängetasche aus Stoff", "bag-fabric", "Hängetasche in Stoff."], ["DAEXBO Bodentisch", "floor-table", "Bodentisch für deinen Van."], ["DAEXBO Hecktürpaneel", "rear-panel", "Paneel für die Hecktür."], ["Eurobox grau", "eurobox", "Eurobox in Grau."], ["Container", "container", "Container für zusätzlichen Stauraum."]]},
+{"name": "Küchen & Wasser", "desc": "Wähle die Küche für deine Reisen.", "items": [["DAEXBO Modulküche", "kitchen-module", "Modulküche für deinen DAEX_Van."], ["DAEXBO Outdoorküche", "kitchen-outdoor", "Outdoorküche für unterwegs."]]},
+{"name": "Technik & Zubehör", "desc": "Ergänze Energieversorgung und Zubehör.", "items": [["Elektropaket L", "power-l", "Elektropaket L. Umfang und Aufpreis stimmen wir im Angebot ab."], ["Elektropaket XL", "power-xl", "Elektropaket XL. Umfang und Aufpreis stimmen wir im Angebot ab."], ["Autoterm Diesel-Standheizung 2 kW", "heater", "Diesel-Standheizung mit 2 kW."], ["Alphadynamik ETB Trittstufe für die Schiebetür", "step-etb", "Trittstufe für die Schiebetür."], ["Zusatzlicht Fahrzeuggrill", "grill-light", "Zusatzlicht im Fahrzeuggrill."], ["Markise Fiamma F45 3,5 Meter", "awning", "Markise mit 3,5 Metern Länge."], ["EcoFlow faltbares Solarfeld 160 Wp", "solar", "Faltbares Solarfeld mit 160 Wp."], ["DAEXBO Sperrstange", "bar", "Sperrstange für deinen modularen Ausbau."], ["BOXIO WASH", "wash", "Mobile Waschlösung."], ["BOXIO Trenntoilette", "toilet-boxio", "Mobile Trenntoilette."], ["Clesana X1", "toilet", "Sanitärlösung Clesana X1."]]}
 ];
 // Bruttopreise: null = auf Anfrage; Zahl = Preis in Euro. Mengenauswahl: Preis pro Stück.
 // Elektropaket L/XL: Hier den Aufpreis gegenüber dem Basispaket eintragen.
@@ -60,10 +61,12 @@ var dxPrices={
   "bar": null,
   "wash": null,
   "toilet-boxio": null,
-  "toilet": null
+  "toilet": null,
+  "heater": null,
+  "solar": null
 };
 // Bilder: Bestehende, funktionierende GitHub-URLs beibehalten.
-// Neue Produktbilder folgen im nächsten Schritt. HTTPS-Adresse passend zur Kennung eintragen.
+// GitHub-Bildadressen: Groß-/Kleinschreibung der Dateinamen beachten. Leere Einträge zeigen einen Platzhalter.
 var dxImages={
   "man1": "https://image.jimcdn.com/app/cms/image/transf/dimension=1070x10000:format=png/path/s9fdcd5c46bd02565/image/idb26ee4c3ee7c4fd/version/1791973801/image.png",
   "man2": "https://image.jimcdn.com/app/cms/image/transf/dimension=1070x10000:format=png/path/s9fdcd5c46bd02565/image/idb26ee4c3ee7c4fd/version/1791973801/image.png",
@@ -79,38 +82,41 @@ var dxImages={
   "seat-vanx": "",
   "seat-linea": "",
   "seat-amf": "",
-  "mattress-long": "",
+  "mattress-long": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/Matratze.png",
   "bed-bars": "",
-  "roof-flexebu": "",
+  "roof-flexebu": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/Schlafdach.jpg",
   "module-long": "",
-  "module-cross": "",
-  "bag-leather": "",
+  "module-cross": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/modul.png",
+  "bag-leather": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/Tasche.png",
   "bag-fabric": "",
-  "floor-table": "",
-  "rear-panel": "",
-  "eurobox": "",
-  "container": "",
-  "kitchen-module": "",
-  "kitchen-outdoor": "",
-  "power-l": "",
-  "power-xl": "",
+  "floor-table": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/Tisch.jpg",
+  "rear-panel": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/panel.jpg",
+  "eurobox": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/Box.png",
+  "container": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/Container.png",
+  "kitchen-module": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/modulk%C3%BCche.png",
+  "kitchen-outdoor": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/Outdoork%C3%BCche.png",
+  "power-l": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/EcDel.png",
+  "power-xl": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/EcInd.png",
   "step-etb": "",
-  "grill-light": "",
+  "grill-light": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/Frontlicht.jpg",
   "awning": "",
-  "bar": "",
-  "wash": "",
-  "toilet-boxio": "",
-  "toilet": ""
+  "bar": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/Sperrstange.png",
+  "wash": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/Bowa.jpg",
+  "toilet-boxio": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/Botoi.png",
+  "toilet": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/clesana.png",
+  "heater": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/ATst.png",
+  "power-start": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/Ecdel.png",
+  "solar": "https://raw.githubusercontent.com/DaemmlerManufaktur/daexbo-konfigurator/main/EcSol.png"
 };
 // Diese Einzelmodule sind im Basispaket enthalten und werden nicht zusätzlich berechnet.
-var dxPackageItems=[["Gefilzte Verkleidung", "felt"], ["Vanue-Dämmung", "insulation"], ["Dämmler XPS-Dämmbodenplatte mit PVX-Belag", "floor"], ["2x Airlineschienen Decke", "rails-ceiling"], ["2x Airlineschienen Wände", "rails-side"], ["2x Airlineschienen Boden", "rails-floor"], ["Designpaneele Decke mit LED-Lichtstreifen", "ceiling-led"], ["Dachhaube vorn", "roof-front"], ["Ventilationsdachhaube hinten", "roof-rear"], ["Elektropaket \"Start\"", "power-start"]];
+var dxPackageItems=[["Gefilzte Verkleidung", "felt"], ["VANUE-Dämmung", "insulation"], ["Dämmler XPS-Dämmbodenplatte mit PVC-Belag", "floor"], ["2 × Airlineschienen Decke", "rails-ceiling"], ["2 × Airlineschienen Wände", "rails-side"], ["2 × Airlineschienen Boden", "rails-floor"], ["Designpaneele Decke mit LED-Lichtstreifen", "ceiling-led"], ["Dachhaube vorn", "roof-front"], ["Ventilationsdachhaube hinten", "roof-rear"], ["Elektropaket \"Start\"", "power-start"]];
 var dxPackages={basic:dxPackageItems.map(function(x){return x[1];})};
 // Bausteine mit Mengenauswahl; Preise gelten jeweils pro Stück.
-var dxQuantityIds=["module-long", "module-cross", "bag-leather", "bag-fabric", "floor-table", "rear-panel", "seat-vanx", "seat-linea", "seat-amf", "rail-schnierle"];
+var dxQuantityIds=["module-long", "module-cross", "bag-leather", "bag-fabric", "floor-table", "rear-panel", "seat-vanx", "seat-linea", "seat-amf", "rail-schnierle", "bar", "eurobox", "container", "window", "rail-amf"];
 var dxSelected={'basic':true};var dxCurrent=0;
 function dxEsc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 function dxDescription(s){return dxEsc(String(s).replace(/<br\s*\/?\s*>/gi,'\n')).replace(/\r?\n/g,'<br>');}
-function dxPackageDetails(){return '<div class="package-items">'+dxPackageItems.map(function(x){return '<div class="package-item"><span aria-hidden="true">✓</span> '+dxEsc(x[0])+'</div>';}).join('')+'</div>';}
+function dxPackageDetails(){return '<div class="package-items">'+dxPackageItems.map(function(x){var img=dxImages[x[1]];return '<div class="package-item">'+(img?'<img class="package-item-image" src="'+dxEsc(img)+'" alt="'+dxEsc(x[0])+'" loading="lazy">':'')+'<span aria-hidden="true">✓</span> '+dxEsc(x[0])+'</div>';}).join('')+'</div>';}
 function dxPackageText(){return dxPackageItems.map(function(x){return x[0];}).join(', ');}
 function dxMoney(n){return Number(n).toLocaleString('de-DE',{style:'currency',currency:'EUR'});}
 function dxIncluded(id){return !!(dxSelected.basic&&dxPackages.basic.indexOf(id)!==-1);}
