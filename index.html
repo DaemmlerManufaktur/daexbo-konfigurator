@@ -125,7 +125,7 @@ var dxPackages={basic:dxPackageItems.map(function(x){return x[1];})};
 var dxQuantityIds=["module-long", "module-cross", "bag-leather", "bag-fabric", "floor-table", "rear-panel", "seat-vanx", "seat-linea", "seat-amf", "rail-schnierle", "bar", "eurobox", "container", "window", "rail-amf"];
 var dxSelected={'basic':true};var dxCurrent=0;
 function dxEsc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
-function dxDescription(s){return dxEsc(String(s).replace(/<br\s*\/?\s*>/gi,'\n')).replace(/\r?\n/g,'<br>').replace(/&lt;strong&gt;/gi,'<strong>').replace(/&lt;\/strong&gt;/gi,'</strong>';}
+function dxDescription(s){return dxEsc(String(s).replace(/<br\s*\/?\s*>/gi,'\n')).replace(/\r?\n/g,'<br>').replace(/&lt;strong&gt;/gi,'<strong>').replace(/&lt;\/strong&gt;/gi,'</strong>');}
 function dxPackageDetails(){return '<div class="package-items">'+dxPackageItems.map(function(x){var img=dxImages[x[1]];return '<div class="package-item">'+(img?'<img class="package-item-image" src="'+dxEsc(img)+'" alt="'+dxEsc(x[0])+'" loading="lazy">':'')+'<span aria-hidden="true">✓</span> '+dxEsc(x[0])+'</div>';}).join('')+'</div>';}
 function dxPackageText(){return dxPackageItems.map(function(x){return x[0];}).join(', ');}
 function dxMoney(n){return Number(n).toLocaleString('de-DE',{style:'currency',currency:'EUR'});}
