@@ -119,13 +119,13 @@ var dxImages={
   "booster-1000": ""
 };
 // Diese Einzelmodule sind im Basispaket enthalten und werden nicht zusätzlich berechnet.
-var dxPackageItems=[["Gefilzte Verkleidung<br>Rundumverkleidung von Decke und Wände mit Carpet-Kunstfilz in Hellgrau, Dunkelgrau oder Schwarz.", "felt"], ["20mm VANUE-Dämmung an Wände und Decke für die beste Isolulierung und dein Abenteuererlebnis auch an kalten Tagen. ", "insulation"], ["Dämmler XPS-Dämmbodenplatte mit PVC-Belag", "floor"], ["2 × Airlineschienen Decke", "rails-ceiling"], ["2 × Airlineschienen Wände", "rails-side"], ["2 × Airlineschienen Boden", "rails-floor"], ["Designpaneele Decke mit LED-Lichtstreifen", "ceiling-led"], ["Dachhaube vorn", "roof-front"], ["Ventilationsdachhaube hinten", "roof-rear"], ["Elektropaket \"Start\"", "power-start"]];
+var dxPackageItems=[["Gefilzte Verkleidung. Rundumverkleidung von Decke und Wände mit Carpet-Kunstfilz in Hellgrau, Dunkelgrau oder Schwarz.", "felt"], ["20mm VANUE-Dämmung an Wände und Decke für die beste Isolulierung und dein Abenteuererlebnis auch an kalten Tagen. ", "insulation"], ["Dämmler XPS-Dämmbodenplatte mit PVC-Belag", "floor"], ["2 × Airlineschienen Decke", "rails-ceiling"], ["2 × Airlineschienen Wände", "rails-side"], ["2 × Airlineschienen Boden", "rails-floor"], ["Designpaneele Decke mit LED-Lichtstreifen", "ceiling-led"], ["Dachhaube vorn", "roof-front"], ["Ventilationsdachhaube hinten", "roof-rear"], ["Elektropaket \"Start\"", "power-start"]];
 var dxPackages={basic:dxPackageItems.map(function(x){return x[1];})};
 // Bausteine mit Mengenauswahl; Preise gelten jeweils pro Stück.
 var dxQuantityIds=["module-long", "module-cross", "bag-leather", "bag-fabric", "floor-table", "rear-panel", "seat-vanx", "seat-linea", "seat-amf", "rail-schnierle", "bar", "eurobox", "container", "window", "rail-amf"];
 var dxSelected={'basic':true};var dxCurrent=0;
 function dxEsc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
-function dxDescription(s){return dxEsc(String(s).replace(/<br\s*\/?\s*>/gi,'\n')).replace(/\r?\n/g,'<br>');}
+function dxDescription(s){return dxEsc(String(s).replace(/<br\s*\/?\s*>/gi,'\n')).replace(/\r?\n/g,'<br>').replace(/&lt;strong&gt;/gi,'<strong>').replace(/&lt;\/strong&gt;/gi,'</strong>';}
 function dxPackageDetails(){return '<div class="package-items">'+dxPackageItems.map(function(x){var img=dxImages[x[1]];return '<div class="package-item">'+(img?'<img class="package-item-image" src="'+dxEsc(img)+'" alt="'+dxEsc(x[0])+'" loading="lazy">':'')+'<span aria-hidden="true">✓</span> '+dxEsc(x[0])+'</div>';}).join('')+'</div>';}
 function dxPackageText(){return dxPackageItems.map(function(x){return x[0];}).join(', ');}
 function dxMoney(n){return Number(n).toLocaleString('de-DE',{style:'currency',currency:'EUR'});}
